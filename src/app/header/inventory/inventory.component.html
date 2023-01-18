@@ -1,0 +1,9 @@
+
+<div class="card card-body module bg-dark-darkest-50">
+  <ul *ngIf="resourceCollection.length > 0" class="inventory-list">
+    <li *ngFor="let resource of resourceCollection">
+      <fa-icon [icon]="resource.icon"></fa-icon>&nbsp;{{resource.name}}: {{resource.amount}}
+    </li>
+  </ul>
+</div>
+

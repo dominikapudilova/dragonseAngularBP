@@ -1,0 +1,45 @@
+<div class="dashboard-expedition module module-bg-light">
+  <p>
+    <span class="font-h">Expedition status</span>
+    <a routerLink="/stables"><span class="float-end">See all</span></a>
+  </p>
+
+  <div class="row">
+    <div class="col-12 col-xxl-6 col-lg-6 mb-2 mb-xxl-0 mb-lg-0">
+
+      <div class="row row-cols-2">
+        <div class="col-md-auto">
+          <button class="btn btn-dark no-hover dashboard-icon " [ngClass]="closestExpedition ? 'bg-' + closestExpedition['element_name'] : ''">
+            <fa-icon [icon]="faQuestion" size="2x"></fa-icon>
+          </button>
+        </div>
+
+        <div class="col">
+          <span>Expedition site:</span><br>
+          <span *ngIf="closestExpedition else noOngoingExpeditions"><strong>{{ closestExpedition.name }}</strong></span>
+
+          <ng-template #noOngoingExpeditions>
+            <span><strong class="text-nowrap">No ongoing expeditions at the moment</strong></span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-xxl-6 col-lg-6">
+      <div *ngIf="closestExpedition" class="row row-cols-2">
+        <div class="col-md-auto">
+          <button class="btn btn-dark no-hover dashboard-icon">
+            <fa-icon [icon]="faHourglass" size="2x"></fa-icon>
+          </button>
+        </div>
+
+        <div class="col">
+          <span>Remaining time:</span><br>
+          <span><strong>{{ getRemainingTime() }}</strong></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

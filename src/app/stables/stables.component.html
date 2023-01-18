@@ -1,0 +1,10 @@
+<header></header>
+<div class="content">
+  <div class="creatures">
+    <creature-card class="creature"
+                   *ngFor="let creature of creatureCollection$ | async"
+                   [creature]="creature">
+    </creature-card>
+  </div>
+</div>
+

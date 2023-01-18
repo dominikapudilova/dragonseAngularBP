@@ -1,0 +1,27 @@
+<div class="welcome-img-container">
+  <img src="assets/img/logo-full.png" alt="Logo">
+</div>
+
+<div class="welcome-login module module-bg-light">
+  <h2>Log in & play</h2>
+
+
+  <ng-template #alreadyLogged>
+    <p class="font-p mt-3">
+      You are already logged in as {{ username }}.<br>
+      Continue to <a routerLink="/dashboard">Dashboard</a>
+    </p>
+    <button class="btn btn-dark-info mt-2" (click)="logout()">Log out</button>
+  </ng-template>
+
+  <ng-container *ngIf="!loggedIn; else alreadyLogged">
+    <login></login>
+
+    <p class="text-muted font-p mb-0 mt-3">Don't have an account yet? Register <a href="/register">here</a>.</p>
+  </ng-container>
+
+</div>
+
+<!--<div class="welcome-main-img-container">
+    <img src="frontend/images/tigrigante-melanistic-tiger-full.png" alt="Welcome image">
+</div>-->

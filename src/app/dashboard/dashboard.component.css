@@ -1,0 +1,15 @@
+/*dashboard*/
+
+.dashboard-achievement,
+.dashboard-expedition {
+  padding: 16px 40px 40px 40px;
+  font-size: 14px;
+}
+.dashboard-expedition div,
+.dashboard-achievement div {
+  align-items: center;
+}
+.dashboard-icon {
+  width: 70px;
+  height: 70px;
+}

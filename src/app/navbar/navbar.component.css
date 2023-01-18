@@ -1,0 +1,55 @@
+/*bootstrap override*/
+.navbar .active {
+  color: var(--light-blue);
+}/*-----------------*/
+
+/*--navbar left & right--*/
+#navbar-left, #navbar-right {
+  position: fixed;
+  top: 90px;
+  min-width: 70px;
+  width: 70px;
+  height: 500px;
+  border-top-left-radius: var(--border-radius-module);
+  border-top-right-radius: var(--border-radius-module);
+
+  filter: drop-shadow(2px 4px 6px black);
+}
+#navbar-left {
+  /*left: 40px;*/
+  /*left: 2rem;*/
+  left: 0;
+  /*margin-right: 60px; !*40->60 bigger inner margin*!*/
+  margin-right: 3rem; /*40->60 bigger inner margin*/
+}
+
+#navbar-right {
+  right: 40px;
+  margin-left: 60px;
+}
+
+#navbar-left .navbar-nav, #navbar-right .navbar-nav {
+  flex-direction: column;
+  align-items: center;
+}
+
+#navbar-left .nav-item, #navbar-right .nav-item {
+  background-image: unset;
+
+  padding: 10px 10px 10px 10px;
+  /*margin-bottom: 10px;*/
+
+  width: 100%;
+}
+#navbar-left .nav-item:hover, #navbar-right .nav-item:hover {
+  background-image: radial-gradient(var(--light-blue) 0%, transparent 70%)
+}
+
+.nav-link {
+  color: var(--off-white);
+  text-align: center;
+}
+
+#navbar-left .nav-item fa-icon, #navbar-right .nav-item fa-icon {
+  font-size: 25px;
+}

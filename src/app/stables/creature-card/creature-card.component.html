@@ -1,0 +1,16 @@
+
+<ng-container *ngIf="creature">
+  <a [routerLink]="['/creature', creature.id]">
+
+    <div class="creature-img-container border-round">
+      <img class="creature-img" src="assets/img/creatures/thumbnails/{{ creature['image_url'] }}" alt="Creature image">
+    </div>
+
+    <p>
+      <span [title]="available ? 'available' : 'unavailable'" class="availability-status" [class.available]="available"></span>&nbsp;
+      <fa-icon [icon]="getGenderIcon()"></fa-icon>&nbsp;
+      {{ creature.name }}
+    </p>
+  </a>
+</ng-container>
+

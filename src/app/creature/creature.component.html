@@ -1,0 +1,163 @@
+<header></header>
+
+<div *ngFor="let error of errorMessages" class="alert alert-warning" role="alert">
+  <fa-icon [icon]="faTriangleExclamation"></fa-icon>&nbsp;{{ error }}
+</div>
+
+<div *ngIf="creature && !isEgg" class="detail">
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-1">
+        <a routerLink="/stables">
+          <button type="button" class="btn btn-dark-transparent float-start">
+            <fa-icon [icon]="faArrowLeft"></fa-icon>
+          </button>
+        </a>
+      </div>
+      <div class="col-md-10">
+        <div class='creature-detail-header'>
+          <h2>
+
+            <ng-container *ngIf="renaming == false else renameInput">
+              <span id="creature-name">{{ creature.name }}</span>
+              <button id="detail-rename-button" type="button" (click)="renaming = true" class="btn btn-dark-transparent" >
+                <fa-icon [icon]="faPen"></fa-icon>
+              </button>
+            </ng-container>
+
+            <ng-template #renameInput>
+              <div class="row align-items-center justify-content-center">
+                <div class="col-3"></div>
+
+                <div class="col-4">
+                  <div class="input-group">
+                    <input #nameInput type="text" class="form-control" [value]="creature.name">
+                  </div>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-dark-info float-start" (click)="renaming = false; rename(nameInput.value)"><fa-icon [icon]="faPen"></fa-icon></button>
+                </div>
+
+                <div class="col-3"></div>
+              </div>
+            </ng-template>
+
+          </h2>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-md-2">
+        <detail-actions-left [creatureId]="creature.id" (errorMessage)="addMessage($event)" (availableAt)="setAvailableAt($event)" (reloadStats)="prepareCreatureInformation()"></detail-actions-left>
+      </div>
+
+      <div class="col-md-8">
+
+        <div class="detail-image-wrapper">
+
+          <a *ngIf="prevId > 0" class="btn btn-dark-transparent detail-arrow detail-arrow-left" id="detail-arrow-left" [routerLink]="['/creature', prevId]">
+            <fa-icon [icon]="faAngleLeft"></fa-icon>
+          </a>
+
+          <img src="assets/img/creatures/{{ creature['image_url'] }}" alt="Creature image" [class.unavailable]="!getAvailable()"/>
+
+          <ng-container *ngIf="!getAvailable()">
+            <p class='unavailable-text'>DRAGON IS UNAVAILABLE</p>
+            <p *ngIf="availableIn > 0" class='timer'>Returns in: <span id='timer-countdown'>{{ getRemainingTime() }}</span></p>
+          </ng-container>
+
+          <a *ngIf="nextId > 0" class="btn btn-dark-transparent detail-arrow detail-arrow-right" id="detail-arrow-right" [routerLink]="['/creature', nextId]">
+            <fa-icon [icon]="faAngleRight"></fa-icon>
+          </a>
+
+        </div>
+
+        <div class="detail-stats">
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <table class="detail-stats-general">
+                <tr *ngFor="let stat of generalInfo">
+                  <td>{{ stat.title }}:</td>
+                  <td>{{ stat.value }}</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="col-md-6">
+              <div class="row">
+
+                <div *ngFor="let stat of otherStats" class="col-md-4">
+                  <div class="loader" id="loader-{{stat.title}}" placement="top" ngbTooltip="{{ stat.value }}" tooltipClass="text-nowrap">
+                    <div class="loader-bg">
+                      <div class="text">{{ stat.title }}</div>
+                    </div>
+                    <div class="spiner-holder-one animate-0-25-a">
+                      <div class="spiner-holder-two animate-0-25-b">
+                        <div class="loader-spiner"></div>
+                      </div>
+                    </div>
+                    <div class="spiner-holder-one animate-25-50-a">
+                      <div class="spiner-holder-two animate-25-50-b">
+                        <div class="loader-spiner"></div>
+                      </div>
+                    </div>
+                    <div class="spiner-holder-one animate-50-75-a">
+                      <div class="spiner-holder-two animate-50-75-b">
+                        <div class="loader-spiner"></div>
+                      </div>
+                    </div>
+                    <div class="spiner-holder-one animate-75-100-a">
+                      <div class="spiner-holder-two animate-75-100-b">
+                        <div class="loader-spiner"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col">
+              <table class="creature-stats">
+                <tr *ngFor="let skill of skills" placement="end" ngbTooltip="{{ skill.base }} + {{ skill.trained }}" tooltipClass="text-nowrap">
+
+                  <td>{{ skill.title }}</td>
+                  <td class='progress-bar-cell'>
+                    <div class='progress progress-thin'>
+                      <div class='progress-bar progress-bar-thin' [style.width.%]="(skill.base / skill.max * 100)"></div>
+                      <div class='progress-bar progress-bar-thin' [style.width.%]="(skill.trained / skill.max * 100)"></div>
+                    </div>
+                  </td>
+                  <td>
+                    {{ round(skill.base + skill.trained) }}
+                  </td>
+
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <detail-actions-right (errorMessage)="addMessage($event)" (availableAt)="setAvailableAt($event)" (reloadStats)="prepareCreatureInformation()" ></detail-actions-right><!--[creatureId]="creature.id"-->
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

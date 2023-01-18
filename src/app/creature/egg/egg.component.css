@@ -1,0 +1,119 @@
+.egg-img-container {
+  border-radius: var(--border-radius-module) var(--border-radius-module) 0 0;
+}
+.egg-img-container img{
+  width: 100%;
+}
+
+/*accordion*/
+#egg-accordion {
+  position: absolute;
+  width: calc(100% - var(--bs-gutter-x));
+  height: calc(100% - 3rem);
+  /*height: calc(100%);*/
+
+  /*bottom: 0;*/
+  bottom: 3rem; /*accordion button height*/
+
+  border: none;
+  border-radius: var(--border-radius-module) var(--border-radius-module) 0 0;
+
+  background-color: var(--dark-blue);
+  color: var(--off-white);
+
+  line-height: normal;
+  z-index: 0;
+}
+
+#egg-accordion .accordion-body {
+  padding: 2rem;
+}
+#egg-accordion img {
+  width: 100%;
+}
+
+/* rollup button */
+.accordion-item {
+  border: none;
+  background: none;
+}
+.egg-accordion-button {
+   height: 3rem;
+ }
+.egg-accordion-button::after {
+  content: none;
+}/*------------*/
+
+/*-- gem input --*/
+.incubation-gem {
+  float: left;
+  width: 100%;
+}
+.incubation-gem p {
+  display: contents; /*hack to load some bootstrapped element*/
+}
+.incubation-gem-img-container {
+  border: 1px solid var(--dark-blue);
+  position: relative;
+}
+.incubation-gem-img-container i.img-center,
+.incubation-gem-img-container img.img-center {
+  /*top: 40%;*/
+  /*max-width: 100%;*/
+  /*max-width: 80%;*/
+  /*width: 80%;*/
+  /*max-height: 80%;*/
+  padding: 1rem;
+}
+.incubation-input {
+  display: flex;
+  align-items: flex-end;
+}
+/*.incubation-input input {
+  position: relative;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+}*/
+.incubation-input div {
+  position: relative;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--dark-blue);
+}
+/*.incubation-input input:valid {
+  border-color: var(--dark-blue);
+}
+.incubation-input input:invalid {
+  border-color: var(--color-fire);
+}
+.incubation-input input[type=number]::-webkit-inner-spin-button,
+.incubation-inputinput [type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}*/
+.incubation-input .btn-input-dec,
+.incubation-input .btn-input-inc {
+  position: absolute;
+  right: 4px;
+  border: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  width: 16px;
+  height: 16px;
+}
+.btn-input-inc {
+  transform: rotate(180deg);
+  bottom: 11%;
+}
+.btn-input-dec {
+  bottom: 0;
+}
+.incubation-input .btn-input-dec:hover,
+.incubation-input .btn-input-inc:hover {
+  opacity: 50%;
+}/*----------------------*/

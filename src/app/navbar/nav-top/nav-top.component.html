@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top position-absolute" id="navbar-top">
+
+  <div class="col-auto col-lg-3 ">
+<!--    <a class="navbar-brand logo" routerLink="/dashboard">-->
+      <img src="assets/img/emblem.png" alt="emblem" class="logo ms-0 ms-sm-4 ms-xl-5" routerLink="/dashboard">
+<!--    </a>-->
+  </div>
+
+  <div class="col-auto col-lg-6 container-fluid justify-content-center">
+
+    <div class="resource-coin d-inline-flex align-items-center">
+      <img src="assets/img/resources/resource-coin.png" alt="Coin" width="16px">
+      <span>{{ coinsAmount | number }}</span>
+      <button class="btn btn-dark-info btn-tiny"><fa-icon [icon]="faPlus" size="sm"></fa-icon></button>
+    </div>
+    <div class="resource-gold d-inline-flex align-items-center">
+      <img src="assets/img/resources/resource-gold.png" alt="Gold" width="16px">
+      <span>{{ goldAmount | number}}</span>
+      <button class="btn btn-dark-info btn-tiny"><fa-icon [icon]="faPlus" size="sm"></fa-icon></button>
+    </div>
+
+  </div>
+
+  <div class="col-12 col-lg-3">
+    <div id="navbar-profile">
+
+      <a href="" style="color: #fffcfd;">
+        <span class="link-white">{{ username }}</span>
+      </a>
+      <img *ngIf="userPfp" src="assets/img/profile_pics/{{ userPfp }}.png" alt="Profile picture">
+      <button class="btn btn-outline-dark" (click)="collapse()" data-bs-toggle="collapse" data-bs-target="#navbar-right" aria-controls="navbar-right" aria-expanded="false" aria-label="Toggle navigation">
+        <fa-icon [icon]="faGear"></fa-icon>
+      </button>
+    </div>
+  </div>
+</nav>

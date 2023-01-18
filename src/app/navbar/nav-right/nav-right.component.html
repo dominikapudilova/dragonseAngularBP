@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-medium-linear-transparent flex-column " id="navbar-right" [ngbCollapse]="menuCollapsed"> <!--collapse navbar-collapse-->
+
+  <ul class="navbar-nav">
+
+    <li *ngFor="let item of menuItems" class="nav-item" placement="start" ngbTooltip="{{ item.title }}" tooltipClass="text-nowrap">
+      <a class="nav-link" [routerLink]="item.title == 'Logout' ? null : item.route" (click)="item.title == 'Logout' ? logout() : false">
+        <fa-icon  [icon]="item.icon"></fa-icon>
+      </a>
+    </li>
+
+  </ul>
+
+</nav>

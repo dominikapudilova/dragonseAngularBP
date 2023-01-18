@@ -1,0 +1,372 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+:root {
+  --off-white: #fffcfd;
+  --light-blue: #12c5d8;
+  --mid-blue: #1d3848;
+  --dark-blue: #071824;
+  --black-blue: #010306;
+
+  --color-fire: #ba1b13;
+  --color-water: #0d6efd;
+  --color-air: #ffc200;
+  --color-earth: #4f281d;
+
+  --border-radius-module:  0.5rem;
+
+  --text-muted: #95aab5;
+}
+
+/*body*/
+body {
+  font-family: Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--off-white);
+  background-color: var(--black-blue);
+  background-image:url("assets/img/background-top.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+body a {
+  color: var(--light-blue);
+  /*color: var(--off-white);*/
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration-color: var(--light-blue);
+  color: var(--light-blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body .font-h {
+  font-size: 17px;
+  letter-spacing: 0.2;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+}
+
+body .font-h2 {
+  font-size: 24px;
+  letter-spacing: 0.2;
+  font-weight: bold;
+  font-family: "Helvetica", sans-serif;
+}
+
+body .font-p {
+  font-size: 14px;
+}
+/*--------------*/
+
+/*wrapper*/
+.wrapper {
+  width: auto;
+  margin: 0 170px; /*left/right panel width + its margins*/
+}/*-------*/
+
+/*header, footer, content*/
+.header, .content, .footer {
+  width: 100%;
+}
+
+.wrapper .header {
+  height: auto;
+  margin-top: 80px;
+  padding: 8px;
+}
+
+.content {
+}
+
+.header, .footer {
+  margin: 8px 0;
+  display: inline-block;
+  padding: 12px;
+}
+
+.footer {
+  background-color: rgba(1, 3, 6, 0.5);
+  /*border-radius: 0.5em;*/
+}
+.footer .copyright {
+  text-align: center;
+}/*--------------*/
+
+/*custom globals*/
+.module {
+  border-radius: var(--border-radius-module);
+  padding: 2rem;
+}
+.module-bg-lighter {
+  background-color: var(--mid-blue);
+}
+.module-bg-light {
+  background-color: var(--dark-blue);
+}
+.module-border {
+  border: 1px solid var(--dark-blue);
+}
+.bordered-light {
+  border: 1px solid var(--mid-blue);
+  border-radius: 0.25rem
+}
+.digital-clock {
+  font-size: 24px;
+  cursor: default;
+  white-space: nowrap;
+}
+.digital-clock .digit {
+  display: inline-block;
+  background-color: var(--dark-blue);
+  padding: 8px 6px;
+  border-radius: 0.25rem;
+  margin: 0 4px;
+}
+
+/*--------------*/
+
+/*bootstrap overrides*/
+.form-control {
+  background-color: var(--mid-blue);
+  border: none;
+  color: var(--off-white);
+
+}
+.form-control:focus {
+  background-color: var(--mid-blue);
+  color: var(--off-white);
+}
+input:focus, .form-control:focus, .form-select:focus {
+  border: none;
+  box-shadow: 0 0 0.5rem 1px var(--light-blue);
+}
+
+.btn {
+  border: none;
+}
+.btn:focus, a[role=button]:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.scrollable {
+  height: 680px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar .active {
+  color: var(--light-blue);
+}
+/*--modals--*/
+.modal-content {
+  background-color: var(--dark-blue);
+  color: var(--off-white);
+}
+.modal-content .btn-close {
+  color: var(--off-white);
+}
+.modal-header, .modal-footer {
+  border-color: var(--mid-blue);
+}
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+/*----------------------------*/
+
+
+
+/*custom bootstrap-like styles*/
+/*btn*/
+.btn.btn-dark {
+  color: var(--off-white);
+  background-color: var(--mid-blue);
+  border: none;
+}
+.btn.btn-dark:hover {
+  /*color: var(--off-white);*/
+  background-color: var(--light-blue);
+}/*-----------------*/
+
+.btn-dark-info {
+  color: var(--off-white);
+  background-color: var(--light-blue);
+  border: 0;
+}
+.btn-dark-info:hover {
+  color: var(--off-white);
+  background-color: #60cbde;
+}
+.btn-dark-info:focus {
+  background-color: var(--light-blue);
+}
+
+.btn-dark-transparent {
+  color: var(--off-white);
+  background-color: transparent;
+  background-image: none;
+}
+.btn-dark-transparent:hover {
+  background-image: radial-gradient(var(--light-blue) 0%, transparent 70%);
+  /*background-size: 100%, 100%;*/
+  /*background-repeat: no-repeat;*/
+  color: var(--off-white);
+} /*-----------------*/
+
+.btn.btn-dark-long {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 14px;
+}
+.btn-dark-long span:last-child {
+  align-self: center;
+}/*-----------------------------*/
+
+.btn-tiny {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  font-size: 8px;
+  padding: 0;
+}/*---*/
+
+.btn-slide {
+  width: 100%;
+  border-radius: 0 0 var(--border-radius-module) var(--border-radius-module);
+  background-color: var(--dark-blue);
+  color: var(--off-white);
+  padding: 16px 0;
+}
+.btn-slide:focus {
+  background-color: var(--dark-blue);
+  color: var(--off-white);
+}
+.btn-slide:hover {
+  background-color: var(--light-blue);
+  color: var(--off-white);
+}
+/*-----------------*/
+
+/*text*/
+.text-muted {
+  color: var(--text-muted) !important;
+}
+.font-size-m {
+  font-size: 2rem;
+}
+.font-size-l {
+  font-size: 3em;
+}
+
+/*----*/
+
+/*links*/
+.link-white {
+  color: var(--off-white);
+}
+.link-white:hover {
+  color: var(--light-blue);
+}
+.link-white.active {
+  color: var(--light-blue);
+}
+button.link-white {
+  background-color: transparent;
+  border: none;
+}
+
+.link-muted {
+  color: var(--text-muted);
+}
+.link-muted:hover {
+  color: var(--light-blue);
+}
+.link-muted.active {
+  color: var(--off-white);
+}
+
+/*--------*/
+.no-hover{
+  pointer-events: none;
+}
+
+.border-round {
+  border-radius: var(--border-radius-module);
+}
+/*-----*/
+
+/*navbar left and navbar right only so far*/
+.bg-dark-medium-linear-transparent {
+  background-image: linear-gradient(var(--dark-blue) 50%, transparent 90%);
+}
+
+.bg-dark-darkest-50 {
+  background-color: rgba(1, 3, 6, 0.5) !important;
+}/*------------------------------*/
+
+/*element backgrounds*/
+.btn.hover-fire:hover, .btn.bg-fire {
+  background-color: var(--color-fire);
+}
+.btn.hover-water:hover, .btn.bg-water {
+  background-color: var(--color-water);
+}
+.btn.hover-air:hover, .btn.bg-air {
+  background-color: var(--color-air);
+}
+.btn.hover-earth:hover, .btn.bg-earth {
+  background-color: var(--color-earth);
+}
+
+.fg-fire {
+  color: var(--color-fire);
+}
+.fg-water {
+  color: var(--color-water);
+}
+.fg-air {
+  color: var(--color-air);
+}
+.fg-earth {
+  color: var(--color-earth);
+}/*------------------------------*/
+
+
+/*MEDIA QUERY*/
+@media (max-width: 1400px) {
+  .font-size-l {
+    font-size: 2rem;
+  }
+  .font-size-m {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 1200px) {
+  .font-size-l {
+    font-size: 1.5rem;
+  }
+  .font-size-m {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 992px) {
+  .font-size-l {
+    font-size: 1rem;
+  }
+  .font-size-m {
+    font-size: 0.75rem;
+  }
+}
+
+
+/*-----------------------*/

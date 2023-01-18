@@ -1,0 +1,139 @@
+<header [display]="false"></header>
+
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="mb-4">Begin hatching your egg</h2>
+  </div>
+
+  <div class="row" *ngIf="errorMessagesGeneral.length > 0">
+    <div *ngFor="let error of errorMessagesGeneral" class="alert alert-dark fade show" role="alert">
+      {{ error }}
+    </div>
+  </div>
+
+  <div class="row" *ngIf="creature">
+
+    <div class="col-4 mb-4" style="position: relative">
+      <div class="egg-img-container module module-border">
+        <img src="assets/img/creatures/eggs/{{creature['egg_url']}}" alt="Egg">
+      </div>
+
+      <ngb-accordion ><!--#accordion="ngbAccordion" id="eggAccordion" class="eggAccordion"-->
+        <ngb-panel id="egg-accordion">
+          <ng-template ngbPanelHeader>
+              <button ngbPanelToggle class="egg-accordion-button btn btn-slide" (click)="loadParents()">
+                <fa-icon [icon]="faChevronUp"></fa-icon>
+              </button>
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <p class="font-h2">Overview</p>
+
+            <table class="w-100">
+              <tr *ngFor="let stat of generalInfo">
+                <td class="text-muted w-50">{{ stat.title }}:</td>
+                <td class="w-50">{{ stat.value }}</td>
+              </tr>
+            </table>
+            <hr class="mt-4 mb-4">
+
+            <div class="row">
+              <div class="col-5" *ngIf="parentFather">
+                <div class="bordered-light">
+                  <img src="assets/img/creatures/thumbnails/{{ parentFather['image_url'] }}"><!--frontend/images/creatures/thumbnails/<?php h($father['image_url']); ?>-->
+                </div>
+                <p class="font-p mt-3 text-muted">{{ parentFather.name }}</p><!--<?php h($father['name']); ?>-->
+              </div>
+
+              <div class="col-2 text-center align-self-center">
+                <span class="font-h2"><strong>+</strong></span>
+              </div>
+
+              <div class="col-5" *ngIf="parentMother">
+                <div class="bordered-light">
+                  <img src="assets/img/creatures/thumbnails/{{ parentMother['image_url'] }}"><!--frontend/images/creatures/thumbnails/<?php h($mother['image_url']); ?>-->
+                </div>
+                <p class="font-p mt-3 text-muted">{{ parentMother.name }}</p><!--<?php h($mother['name']); ?>-->
+
+              </div>
+
+            </div>
+
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+
+    </div>
+
+    <div class="col-8">
+      <div class="module module-border bg-dark-transparent border-round">
+
+        <div class="container">
+          <p>
+            <span class="font-h2">Incubation</span>
+            <a routerLink="/wiki"><span class="float-end">More info</span></a><!--index.php?page=wiki#wiki-breeding-->
+          </p>
+          <p class="font-p">To begin the process of hatching your egg and meeting your new dragon, the egg first must be incubated.<br>
+            For this you will need either 10 gemstones or 1 legendary gemstone. Based on the rarity of the gemstones you choose, the default incubation period of 48 hours may be shortened.
+          </p>
+        </div>
+
+        <div class="container">
+          <div class="row" *ngIf="errorMessagesGems.length > 0">
+            <div *ngFor="let error of errorMessagesGems" class="alert alert-dark fade show" role="alert">
+              {{ error }}
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col" *ngFor="let gem of incubationGems">
+              <div class="incubation-gem mb-2">
+                <div class="incubation-gem-img-container border-round">
+                  <div class="ratio ratio-1x1 w-100">
+                    <img src="assets/img/resources/resource-placeholder.png" alt="Gem image" class="img-center display-2">
+
+                    <div class="incubation-input">
+                      <div class="form-control">{{ gem.given }}</div>
+                      <button class="btn-input-dec" (click)="change(gem.id, -1)"></button>
+                      <button class="btn-input-inc" (click)="change(gem.id, 1)"></button>
+                    </div>
+                  </div>
+                </div>
+                <!--<div class="rare-item-star">
+                  <img src="assets/img/resources/rare-item-star.svg">
+                </div>-->
+              </div>
+
+              <p class="font-p mb-0">{{ gem.title }}</p>
+              <p class="font-p text-muted">Owned: {{ gem.amount }}</p>
+            </div>
+
+            <div class="container"><hr></div>
+
+            <div class="container">
+              <div class="row">
+
+                <div class=" col-lg-12 col-xl-6 mt-3">
+                  <digital-clock [remainingSecs]="incubationTimeRemaining"></digital-clock>
+                  <p class="font-p text-muted mt-2">Incubation period<span *ngIf="totalTimeDecrease > 0">: -{{ totalTimeDecrease }}%</span></p>
+                </div>
+
+                <div class=" col-lg-12 col-xl-6 mt-3">
+                  <button class="btn btn-dark-info w-100 p-4 border-round" type="submit" (click)="incubate()">
+                    <span>Begin incubation&nbsp;</span><fa-icon [icon]="faWandSparkles"></fa-icon>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

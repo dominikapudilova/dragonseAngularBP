@@ -1,0 +1,18 @@
+<form role="form" [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-group">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" name="username" formControlName="username">
+  </div>
+  <div class="form-group mt-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" name="password" formControlName="password">
+  </div>
+  <button type="submit" class="btn btn-dark-info mt-3">Login</button>
+  <div class="alert alert-warning mt-3" *ngIf="username?.touched && password?.touched && (username?.invalid || password?.invalid)">
+    <span *ngIf="username?.errors?.['required'] || password?.errors?.['required']">You forgot to fill in some of the fields.</span>
+    <span *ngIf="username?.errors?.['minlength'] || password?.errors?.['minlength']">The minimum length of username and password is 4 characters.</span>
+  </div>
+  <div class="alert alert-danger mt-3" *ngIf="errors.length > 0">
+    <span *ngFor="let error of errors">{{ error }}</span>
+  </div>
+</form>

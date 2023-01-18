@@ -1,0 +1,56 @@
+.creatures {
+  justify-content: left;
+}
+
+.creature.egg.incubating .creature-img-container{
+  position: relative;
+}
+.creature.egg.incubating img {
+  opacity: 0.5;
+}
+
+.creature.egg.incubating .incubation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+}
+
+.incubation-overlay digital-clock {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.incubation-overlay .digital-clock .digit {
+  padding: 10px 10px;
+  font-size: 28px;
+}
+
+.incubation-overlay .btn-slide {
+  position: absolute;
+  bottom: 0;
+}
+.btn-slide:disabled {
+  opacity: 0.4;
+  background-color: var(--dark-blue);
+}
+
+/*highlighted egg*/
+.creature-img-container.highlight {
+  border-color: var(--light-blue);
+}
+/*.creature.egg.incubating .highlight img {
+  opacity: 1;
+}
+.creature.egg.incubating .creature-img-container.highlight  {
+  background-color: var(--light-blue);
+}
+.creature.egg.incubating .creature-img-container.highlight .btn-slide:disabled  {
+  opacity: 0;
+}*/
+
+

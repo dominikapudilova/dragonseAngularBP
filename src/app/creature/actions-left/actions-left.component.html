@@ -1,0 +1,86 @@
+<div class="detail-panel-sides detail-panel-sides-left module module-bg-light">
+
+  <div>
+    <p class="font-h">Expeditions</p>
+
+    <div class="row row-cols-2">
+
+      <div *ngFor="let elem of elements" class="col">
+        <button class="btn btn-dark ratio ratio-1x1 hover-{{elem.name}} " type="button" (click)="openExpeditionModal(expeditionModal, elem.name)"><!--data-bs-toggle="modal" data-bs-target="#<?php h($elem); ?>ExpeditionModal"-->
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="elem.icon"></fa-icon></span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div>
+    <p class="font-h mt-3">Training</p>
+
+    <div class="row row-cols-2">
+      <div *ngFor="let action of trainingActions" class="col">
+        <a class="btn btn-dark ratio ratio-1x1" (click)="train(action.skill)">
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="action.icon"></fa-icon></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #expeditionModal let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title"><span class="text-capitalize">{{ selectedExpeditionElement.name }}</span> element expedition</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p class="font-h">Choose site</p>
+    <div class="row">
+
+      <ng-container *ngFor="let expedition of selectedExpeditions">
+        <div class="col-4">
+          <input type='radio' class='btn-check' autocomplete='off' name="expeditionType" [id]="'expedition' + expedition.id" [value]="expedition.id" (change)="selectedExpeditionId = expedition.id">
+          <label class='expedition-img w-100' [for]="'expedition' + expedition.id">
+            <img src="assets/img/expeditions/expedition-{{ expedition.id }}.png" alt="Expedition image">
+            <span>{{ expedition.name }}</span>
+          </label>
+        </div>
+      </ng-container>
+
+    </div>
+    <hr>
+    <p class="font-h">Choose duration</p>
+    <div class="row">
+
+      <ng-container *ngFor="let length of expeditionLengths; index as i">
+        <div class="col-4">
+          <input type='radio' class='btn-check' autocomplete='off' name="expeditionLength" [id]="'length' + i" [value]="length" #expeditionLength (change)="selectedLength = length; expeditionEnergyCost = (length / 60) * 10">
+          <label class='btn btn-dark btn-dark-long' [for]="'length' + i">
+            <span>{{ length / 60 }} h</span>
+            <span><fa-icon [icon]="faHourglass"></fa-icon></span>
+          </label>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="container">
+      <div class="row row-cols-3">
+        <div class="col"></div>
+        <div class="col"><button type="button" class="btn btn-dark btn-dark-long" (click)="modal.dismiss()">Close</button></div>
+        <div class="col">
+          <button type="submit" class="btn btn-dark-info btn-dark-long" (click)="modal.close(true)">
+            <span>Send off</span>
+            <span *ngIf="expeditionEnergyCost > 0">{{ expeditionEnergyCost }}&nbsp;<fa-icon [icon]="faBolt"></fa-icon></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>

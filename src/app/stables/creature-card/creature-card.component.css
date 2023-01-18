@@ -1,0 +1,43 @@
+.creature-img-container {
+  width: 250px;
+  height: 250px;
+
+  overflow: hidden;
+
+  background-color: transparent;
+  border: 1px solid var(--dark-blue);
+}
+.creature-img-container:hover {
+  border-color: var(--light-blue);
+}
+
+.creature-img {
+  width: 100%;
+}
+
+p {
+  text-decoration: none;
+  color: var(--off-white);
+  font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.availability-status {
+  display: inline-block;
+  height: 0.5em;
+  width: 0.5em;
+  border-radius: 50%;
+  /*background-color: transparent;*/
+  background-color: #6a737b;
+}
+/*.availability-status.unavailable {
+  background-color: #6a737b;
+}*/
+.availability-status.available {
+  background-color: #5d8412;
+}

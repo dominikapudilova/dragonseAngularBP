@@ -1,0 +1,28 @@
+<div class="welcome-img-container">
+  <img src="assets/img/logo-full.png" alt="Logo">
+</div>
+
+<div class="welcome-login module module-bg-light">
+  <h2>Register</h2>
+
+  <form role="form" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" formControlName="username">
+    </div>
+    <div class="form-group mt-3">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+    </div>
+    <div class="form-group mt-3">
+      <label for="password-confirm">Password confirmation</label>
+      <input type="password" class="form-control" id="password-confirm" formControlName="passwordConfirmation">
+    </div>
+    <button type="submit" class="btn btn-dark-info mt-3">Submit</button>
+    <div class="alert alert-danger mt-3" *ngIf="errors.length > 0">
+      <span *ngFor="let error of errors">{{ error }}</span>
+    </div>
+  </form>
+
+  <p class="text-muted mb-0 mt-3">Already have an account? Login <a href="/">here</a>.</p>
+</div>

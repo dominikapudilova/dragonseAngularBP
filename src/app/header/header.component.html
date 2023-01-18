@@ -1,0 +1,46 @@
+<div class="header">
+
+  <ng-container *ngIf="display">
+    <div class="row">
+
+      <div class="col-xl-6 col-12">
+        <p  *ngIf="username" class="font-h">Welcome back, <a routerLink="/account">{{ username }}</a></p>
+      </div>
+
+      <!--<div class="col-md">
+
+      </div>-->
+
+      <div class="col-xl-6 col-12 text-end font-h header-tabs">
+        <p>
+          <span class="header-tab">
+            <a class="link-white" routerLink="/dashboard">
+              Dashboard
+            </a>
+          </span>
+          <span class="tab-selected visually-hidden"></span>
+          <span class="header-tab">
+            <a class="link-white" routerLink="/stables">
+              Stables
+            </a>
+          </span>
+          <span class="tab-selected visually-hidden"></span>
+
+          <span class="header-tab header-inventory link-white" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!inventoryCollapsed" [class.active]="!inventoryCollapsed">
+            Inventory
+          </span>
+          <span class="tab-selected visually-hidden"></span>
+        </p>
+      </div>
+
+    </div>
+    <hr>
+
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="inventoryCollapsed">
+      <header-inventory [inventoryCollapsed]="inventoryCollapsed"></header-inventory>
+    </div>
+  </ng-container>
+
+
+</div>
+

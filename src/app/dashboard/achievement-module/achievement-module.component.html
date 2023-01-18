@@ -1,0 +1,22 @@
+<div class="dashboard-achievement module module-bg-light">
+
+  <p>
+    <span class="font-h">Achievements</span>
+    <a href="/achievements"><span class="float-end">See all</span></a>
+  </p>
+
+  <!--<?php $recentAchievement = $uc->getLatestAchievement($userId); ?>-->
+  <div class="row row-cols-2">
+    <div class="col-md-auto">
+      <button class="btn btn-dark dashboard-icon">
+        <i class="fa-2x fa-solid fa-trophy"></i>
+      </button>
+    </div>
+
+    <div class="col">
+      <span>Current task:</span><br>
+      <span><strong></strong></span> <!--<?php $recentAchievement ? h($recentAchievement['description']) : h("No available achievements."); ?>-->
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+.inventory-list {
+  columns: 4;
+  list-style-type: none;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}

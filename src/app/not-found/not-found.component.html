@@ -1,0 +1,13 @@
+<header *ngIf="loggedIn"></header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-6 module module-bg-light">
+      <p class="font-h2">Sorry, this page could not be found.</p><br>
+      <p>Back to <a *ngIf="!loggedIn else backToDashboard" routerLink="/">Login</a></p>
+      <ng-template #backToDashboard><a routerLink="/dashboard">Dashboard</a></ng-template>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

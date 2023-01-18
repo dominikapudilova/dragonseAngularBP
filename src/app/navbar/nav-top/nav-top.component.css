@@ -1,0 +1,41 @@
+/*--navbar top--*/
+#navbar-top {
+  font-size: 14px;
+}
+#navbar-top img.logo  {
+  display: block;
+  width: auto;
+  height: 40px;
+  padding-left: 18px; /*same width as left navbar*/
+  cursor: pointer;
+}
+
+.resource-coin, .resource-gold {
+  margin: 0 16px;
+  line-height: 16px;
+}
+
+#navbar-top .resource-coin span, #navbar-top .resource-gold span {
+  margin-left: 10px;
+  margin-right: 6px;
+}
+
+#navbar-profile {
+  float:right;
+  margin-right: 40px;
+}
+#navbar-profile img {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+}
+#navbar-profile button {
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  border: none;
+  color: var(--light-blue);
+}
+/*---------------*/

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-medium-linear-transparent flex-column ms-0 ms-sm-4 ms-xl-5" id="navbar-left">
+
+  <div class=""> <!--collapse navbar-collapse-->
+    <ul class="navbar-nav">
+
+
+      <li *ngFor="let item of menuItems" class="nav-item" placement="end" ngbTooltip="{{ item.title }}" tooltipClass="text-nowrap" container="body">
+        <a class="nav-link" [routerLink]="item.route" routerLinkActive="active"><fa-icon [icon]="item.icon"></fa-icon></a>
+      </li>
+
+
+      <li *ngIf="rewardsClaimable" class="nav-item animate" placement="end" ngbTooltip="Claim rewards!" tooltipClass="text-nowrap" container="body">
+        <div id="animation-before"></div>
+        <div id="animation-after"></div>
+        <a class="nav-link" (click)="openClaimModal(claimModal)"><!--onclick="celebrationAnimation()"  data-bs-toggle="modal" data-bs-target="#claimModal" -->
+          <fa-icon [icon]="faStar"></fa-icon>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
+
+<ng-template #claimModal let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title">Check your rewards</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+
+    <div class="row">
+      <div class="col-2" *ngFor="let reward of rewards">
+        <div class="reward module module-bg-lighter mb-2">
+          <div class="ratio ratio-1x1 w-100">
+            <img src="assets/img/resources/resource-{{reward['code']}}.png" alt="Gem image" class="img-center" (error)="resourceImg.src = 'assets/img/resources/resource-placeholder.png'" #resourceImg>
+          </div>
+          <!--<div class="rare-item-star">
+            <img src="assets/img/resources/rare-item-star.svg">
+          </div>-->
+        </div>
+
+        <p class="font-p mb-0">{{ reward['name'] }}</p>
+        <p class="font-p text-muted" [style.line-height]="'0.75rem'">+{{ reward['sum_amount'] }}</p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Later</button>
+    <button type="submit" class="btn btn-dark-info" ngbAutofocus (click)="modal.close(true)">Claim all</button>
+  </div>
+
+</ng-template>

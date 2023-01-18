@@ -1,0 +1,69 @@
+<header [display]="false"></header>
+
+<div class="container-fluid">
+
+  <ng-container *ngIf="eggsIncubating.length > 0">
+    <div class="row mb-4 mt-2">
+      <div class="col-auto square-btn-text justify-content-end">
+        <span class="font-size-l"><fa-icon [icon]="faEgg"></fa-icon></span>
+      </div>
+      <div class="col-auto">
+        <h2>Eggs in incubation</h2>
+        <p class="font-p mb-0">These eggs are currently undergoing the process of incubation and cannot be manipulated. Once they are ready to hatch you will be notified.</p>
+      </div>
+    </div>
+
+    <div class="creatures">
+      <div class="creature egg incubating" *ngFor="let egg of eggsIncubating">
+        <div class="creature-img-container border-round" [class.highlight]="egg.highlight">
+          <img class="creature-img" src="assets/img/creatures/eggs/{{ egg['egg_url'] }}" alt="Egg image">
+
+          <div class="incubation-overlay">
+
+            <digital-clock *ngIf="egg.remainingSecs > 1" [remainingSecs]="egg.remainingSecs"></digital-clock>
+
+            <button class="btn btn-slide" [disabled]="egg.remainingSecs > 1" (click)="hatch(egg['id'])">
+              Hatch&nbsp;<fa-icon [icon]="faWandSparkles"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+
+  <ng-container *ngIf="eggsWaiting.length > 0">
+    <div class="row mb-4 mt-4">
+      <div class="col-auto square-btn-text justify-content-end">
+        <span class="font-size-l"><fa-icon [icon]="faEgg"></fa-icon></span>
+      </div>
+      <div class="col-auto">
+        <h2>Eggs in waiting</h2>
+        <p class="font-p mb-0">These eggs are currently waiting to be incubated. You can begin the process by clicking the egg.</p>
+      </div>
+    </div>
+
+    <div class="creatures">
+      <div class="creature egg" *ngFor="let egg of eggsWaiting" [routerLink]="['/egg/', egg['id']]">
+        <div class="creature-img-container border-round">
+          <img class="creature-img" src="assets/img/creatures/eggs/{{ egg['egg_url'] }}" alt="Egg image">
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="eggsWaiting.length <= 0 && eggsIncubating.length <= 0">
+    <div class="row mb-4 mt-2">
+      <div class="col-auto square-btn-text justify-content-end">
+        <span class="font-size-l"><fa-icon [icon]="faEgg"></fa-icon></span>
+      </div>
+      <div class="col-auto">
+        <h2>No eggs</h2>
+        <p class="font-p mb-0">Your hatchery is empty right now. To obtain dragon eggs, breed your dragons first.</p>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

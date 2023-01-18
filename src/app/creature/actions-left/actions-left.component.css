@@ -1,0 +1,20 @@
+.expedition-img img {
+  width: 100%;
+  filter: grayscale(1);
+}
+.expedition-img img {
+  margin-bottom: 10px;
+  border-radius: 0.25rem;
+  transition: filter .15s ease-in-out,background-color .15s ease-in-out;
+}
+.expedition-img img:hover {
+  filter: grayscale(0);
+}
+
+input.btn-check:checked + label img {
+  filter: grayscale(0);
+}
+
+input.btn-check:checked + .btn {
+  background-color: var(--light-blue);
+}

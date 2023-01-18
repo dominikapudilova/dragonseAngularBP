@@ -1,0 +1,53 @@
+#animation-before {
+  background: radial-gradient(var(--light-blue) 0%, transparent 70%);
+  opacity: 0;
+}
+#animation-after {
+  background: transparent;
+  opacity: 0;
+}
+@keyframes backlight_blink {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+#animation-before,
+#animation-after {
+  animation-name: backlight_blink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+  animation-delay: -2s;
+}
+#animation-before,
+#animation-after {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}
+
+.nav-item.animate {
+  background-color: transparent;
+  transition: background-color 2s 1s;
+  position: relative;
+}
+
+/*claim rewards modal*/
+.reward {
+  float: left;
+  width: 100%;
+}
+.reward img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+.img-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

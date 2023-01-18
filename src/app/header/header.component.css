@@ -1,0 +1,43 @@
+/*header*/
+.header .header-tabs span {
+  padding-left: 10px;
+}
+
+.header hr {
+  margin-top: 0;
+}
+
+
+.header input[type=search] {
+  border: 1px solid var(--dark-blue);
+}
+.header #stables-search {
+  width: 250px;
+}
+
+.header .filters label {
+  margin-right: 1rem;
+}
+
+.header .filters .form-select {
+  display: inline-block;
+  width: 10rem;
+  background-color: transparent;
+  color: var(--off-white);
+  border: 1px solid var(--dark-blue);
+  border-radius: 0.5rem;
+}
+.header .filters select.form-select {
+  color: var(--text-muted);
+}
+.header #collapseFilter .content {
+}
+
+/*--------*/
+/** {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}*/

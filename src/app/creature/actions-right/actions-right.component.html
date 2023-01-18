@@ -1,0 +1,81 @@
+<div class="detail-panel-sides detail-panel-sides-right ">
+
+  <div class="module module-bg-light">
+    <p class="font-h">Care taking</p>
+
+    <div class="row row-cols-2">
+      <div class="col">
+        <a role="button" class="btn btn-dark ratio ratio-1x1 " [class.disabled]="!pettable" (click)="pet()" id="creature-pet-5"> <!--<?php h($pettable); ?>-->
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="faHandHoldingHeart"></fa-icon></span>
+        </a>
+      </div>
+      <div class="col">
+        <a role="button" class="btn btn-dark ratio ratio-1x1" href="">
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="faHandLizard"></fa-icon></span>
+        </a>
+      </div>
+      <div class="col">
+        <a role="button" class="btn btn-dark ratio ratio-1x1" id="creature-rest-20" (click)="rest(60)">
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="faClock"></fa-icon></span>
+        </a>
+      </div>
+      <div class="col">
+        <a role="button" class="btn btn-dark ratio ratio-1x1" id="creature-rest-80" (click)="rest(240)">
+          <span class="square-btn-text font-size-l"><fa-icon [icon]="faMoon"></fa-icon></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="module module-bg-light">
+    <p class="font-h">Breeding</p>
+
+      <div class="form-group">
+        <select class="form-control form-select" id="mate-select-id" name="mate-select-id" #selectMate (focus)="loadMates()">
+          <option selected></option>
+          <option *ngFor="let mate of mates" [value]="mate.id">{{ mate.name }}</option>
+        </select>
+      </div>
+      <button class="btn btn-dark btn-dark-long mt-3 mb-3" (click)="breed(selectMate.value)">
+        <span>Breed</span>
+        <span><fa-icon [icon]="faHeart"></fa-icon></span>
+      </button>
+    <a routerLink="/wiki" class="text-muted">Breeding calculator</a>
+  </div>
+
+
+  <div class="row row-cols-2">
+    <div class="col-6" style="padding-right: 6px">
+      <button class="btn btn-dark btn-dark-long" type="button" (click)="openSellModal(sellModal)">
+        <span>Sell</span>
+        <span><img src="assets/img/resources/resource-gold.png" width="16px" alt="gold"></span>
+      </button>
+    </div>
+    <div class="col-6" style="padding-left: 6px">
+      <button class="btn btn-dark btn-dark-long" type="button"> <!--data-bs-toggle="modal" data-bs-target=""-->
+        <span>Kill</span>
+        <span><fa-icon [icon]="faSkull"></fa-icon></span>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #sellModal let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title">Sell this creature?</h5><!--id="sellModalLabel"-->
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    This creature will be sold for <strong>{{ creaturePrice }} <img src="assets/img/resources/resource-gold.png" alt="gold" width="16px"></strong>.<br>
+    <span>Are you sure you want to proceed?</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" ngbAutofocus (click)="modal.dismiss()">Close</button>
+    <button type="submit" class="btn btn-dark-info" (click)="modal.close(true)">Sell dragon</button>
+  </div>
+
+</ng-template>

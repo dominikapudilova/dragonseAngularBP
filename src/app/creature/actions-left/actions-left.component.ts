@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {faBolt, faBoltLightning, faBrain, faDumbbell, faHourglass, faShield} from "@fortawesome/free-solid-svg-icons";
 import {ElementService} from "../../services/element.service";
 import {Utils} from "../../shared/utils";
@@ -6,12 +6,10 @@ import {CreatureService} from "../../services/creature.service";
 import {ErrorService} from "../../shared/error-service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ExpeditionService} from "../../services/expedition.service";
-import {TimerService} from "../../services/timer.service";
 
 @Component({
   selector: 'detail-actions-left',
   templateUrl: './actions-left.component.html',
-  // encapsulation: ViewEncapsulation.None,
   styleUrls: ['./../creature.component.css', './actions-left.component.css']
 })
 export class ActionsLeftComponent implements OnInit {
@@ -140,9 +138,4 @@ export class ActionsLeftComponent implements OnInit {
   private getElementIcon(name: string) {
     return Utils.getElementIcon(name);
   }
-
-  log(e: any) {
-    console.log(e);
-  }
-
 }

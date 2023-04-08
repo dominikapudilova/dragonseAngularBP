@@ -17,8 +17,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*toggleInventoryCollapse() {
-    this.inventoryCollapsed = !this.inventoryCollapsed;
-  }*/
-
 }

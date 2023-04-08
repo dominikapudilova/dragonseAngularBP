@@ -3,13 +3,6 @@
   text-transform: uppercase;
 }
 
-/*#detail-rename-button {
-  margin-bottom: 6px;
-}
-#detail-rename-form {
-  margin-bottom: 0;
-}*/
-
 .detail-image-wrapper {
   height: 400px;
   display: flex;

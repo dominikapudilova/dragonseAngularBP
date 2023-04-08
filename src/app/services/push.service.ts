@@ -6,7 +6,6 @@ import {BehaviorSubject} from "rxjs";
 })
 export class PushService {
 
-  // claimableRewards: boolean = false;
   private _pushClaimableRewards: BehaviorSubject<boolean> = new BehaviorSubject(true); //check claimable rewards always upon subscription
   private _pushCurrency: BehaviorSubject<boolean> = new BehaviorSubject(true); //refresh gold and coins amount
   private _pushResource: BehaviorSubject<number> = new BehaviorSubject(0); //refresh single resource amount upon subscription

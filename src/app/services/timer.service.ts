@@ -21,14 +21,6 @@ export class TimerService {
         tap(() => remainingSeconds = remainingSeconds - 1),
         map(() => remainingSeconds)
       );
-    /*timer(1000, 1000) //Initial delay 1 seconds and interval countdown also 1 second
-      .pipe(
-        takeWhile( () => counter > 0 ),
-        tap(() => counter--)
-      )
-      .subscribe( () => {
-        console.log(counter);
-      } );*/
   }
 
   public static getRemainingTimeFormatted(secondsLeft: number) : string {

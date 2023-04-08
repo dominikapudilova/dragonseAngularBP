@@ -3,7 +3,6 @@ import {ResourceService} from "../../services/resource.service";
 import {AuthService} from "../../services/auth.service";
 import {resources} from "../../shared/const-resource";
 import {faGem} from '@fortawesome/free-solid-svg-icons';
-import {map} from "rxjs";
 import {PushService} from "../../services/push.service";
 
 @Component({
@@ -32,7 +31,6 @@ export class InventoryComponent implements OnInit, OnChanges {
     })
   }
 
-
   ngOnInit(): void {
     this.loadInventory();
   }
@@ -50,18 +48,6 @@ export class InventoryComponent implements OnInit, OnChanges {
 
   /*Gets all inventory items except gold and coins, sorts alphabetically and prepares array of resources*/
   private loadInventory() {
-    /*this.resourceService.getAllResources()
-      .pipe(map(((resources: any) => resources.sort((a: any, b: any) => a.code.localeCompare(b.code)))))
-      .subscribe({
-        next: (res: any) => {
-          for (let i = 0; i < res.length; i++) {
-            let resource = res[i];
-            if (resource.id != resources.ID_GOLD && resource.id != resources.ID_COIN) { //manually skip gold and coins
-              this.resourceCollection.push({id: resource.id, name: resource.name, amount: 0, icon: faGem});
-            }
-          }
-        }
-      });*/
     this.resourceService.getAllResources().then(
       (res: any) => {
         res.sort((a: any, b: any) => a.code.localeCompare(b.code));

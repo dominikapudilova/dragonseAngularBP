@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {faEgg, faWandSparkles} from "@fortawesome/free-solid-svg-icons";
 import {CreatureService} from "../services/creature.service";
-import { Location } from '@angular/common';
 import {Router} from "@angular/router";
 
 @Component({
@@ -60,7 +59,6 @@ export class HatcheryComponent implements OnInit {
           this.router.navigate(["/creature", id]);
         }
       }/*, (error) => {
-        console.error(error)
       }*/
     )
   }

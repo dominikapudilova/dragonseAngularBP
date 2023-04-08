@@ -35,30 +35,6 @@ export class LoginComponent implements OnInit {
         this.errors.push(errorMessage);
       }
     });
-
-    /*this.authService.login(user).subscribe({
-      next: (res: any) => {console.log(res)},
-      error: (err: HttpErrorResponse) => {
-        let errorMessage = "";
-        if (err.error?.message) {
-          errorMessage = err.error.message;
-        } else {
-          if (err.status == 503) {
-            errorMessage = "Service is unavailable. Try again later.";
-          } else {
-            errorMessage = "Something went wrong. Contact admin.";
-          }
-        }
-        this.errors.push(errorMessage);
-
-        // this.errors.push(err.error?.message ? err.error.message : err.message);
-        // console.log(!!err.error)
-        // console.log("-------")
-        // console.log("Error: ") ;console.log(err);
-        // console.log("This errors:") ;console.log(this.errors)
-      }
-    });*/
-
   }
 
   get username() {

@@ -18,7 +18,7 @@
         <img src="assets/img/creatures/eggs/{{creature['egg_url']}}" alt="Egg">
       </div>
 
-      <ngb-accordion ><!--#accordion="ngbAccordion" id="eggAccordion" class="eggAccordion"-->
+      <ngb-accordion >
         <ngb-panel id="egg-accordion">
           <ng-template ngbPanelHeader>
               <button ngbPanelToggle class="egg-accordion-button btn btn-slide" (click)="loadParents()">
@@ -41,9 +41,9 @@
             <div class="row">
               <div class="col-5" *ngIf="parentFather">
                 <div class="bordered-light">
-                  <img src="assets/img/creatures/thumbnails/{{ parentFather['image_url'] }}"><!--frontend/images/creatures/thumbnails/<?php h($father['image_url']); ?>-->
+                  <img src="assets/img/creatures/thumbnails/{{ parentFather['image_url'] }}">
                 </div>
-                <p class="font-p mt-3 text-muted">{{ parentFather.name }}</p><!--<?php h($father['name']); ?>-->
+                <p class="font-p mt-3 text-muted">{{ parentFather.name }}</p>
               </div>
 
               <div class="col-2 text-center align-self-center">
@@ -52,9 +52,9 @@
 
               <div class="col-5" *ngIf="parentMother">
                 <div class="bordered-light">
-                  <img src="assets/img/creatures/thumbnails/{{ parentMother['image_url'] }}"><!--frontend/images/creatures/thumbnails/<?php h($mother['image_url']); ?>-->
+                  <img src="assets/img/creatures/thumbnails/{{ parentMother['image_url'] }}">
                 </div>
-                <p class="font-p mt-3 text-muted">{{ parentMother.name }}</p><!--<?php h($mother['name']); ?>-->
+                <p class="font-p mt-3 text-muted">{{ parentMother.name }}</p>
 
               </div>
 
@@ -72,7 +72,7 @@
         <div class="container">
           <p>
             <span class="font-h2">Incubation</span>
-            <a routerLink="/wiki"><span class="float-end">More info</span></a><!--index.php?page=wiki#wiki-breeding-->
+            <a routerLink="/wiki"><span class="float-end">More info</span></a>
           </p>
           <p class="font-p">To begin the process of hatching your egg and meeting your new dragon, the egg first must be incubated.<br>
             For this you will need either 10 gemstones or 1 legendary gemstone. Based on the rarity of the gemstones you choose, the default incubation period of 48 hours may be shortened.
@@ -101,9 +101,6 @@
                     </div>
                   </div>
                 </div>
-                <!--<div class="rare-item-star">
-                  <img src="assets/img/resources/rare-item-star.svg">
-                </div>-->
               </div>
 
               <p class="font-p mb-0">{{ gem.title }}</p>

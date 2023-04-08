@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import {BehaviorSubject, firstValueFrom, map, Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -19,23 +19,14 @@ export class AuthService {
 
   readonly COOKIE_TOKEN_NAME = "token";
   private token: string = "";
-  // private _loggedIn: boolean = false;
-  // private _user: any = {};
   private _user: any = {};
 
-  //subscription object of loggedIn
-  // private _loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  //subscription object for logged in User
   private _userSubscription: BehaviorSubject<any> = new BehaviorSubject(this._user);
-
-  //public headers with auth token
-  // public authHeaders: HttpHeaders = new HttpHeaders();
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private userService: UserService, private authHeaderInterceptor: AuthHeaderInterceptor) {
     let token = this.authHeaderInterceptor.token;
     if (token) {
       this.token = token;
-      // this.authHeaders = this.prepareAuthHeaders();
       this.assignUserFromJwt();
     }
   }
@@ -44,34 +35,13 @@ export class AuthService {
     return this._userSubscription;
   }
 
-  /*get loggedIn(): Observable<boolean> {
-    return this._loggedIn;
-  }*/
-
   login(user: object) {
-    // return this.http.post(environment.API_URL + "login", JSON.stringify(user));
-    /*return this.http.post(environment.API_URL + "login", JSON.stringify(user)).subscribe({
-      next: (res: any) => {
-
-        console.log("Získávám token");
-        console.log(res.jwt);
-        console.log("Ukládám do cookie");
-        //get token
-        //get expiration
-        //save token as cookie
-      },
-
-      error: (error: HttpErrorResponse) => {console.log(error.error.message); throwError(error);}
-    });*/
 
     return this.http.post(environment.API_URL + "login", JSON.stringify(user)).pipe(
       map((res: any) => {
         if (res.jwt) {
           //save token globally
           this.token = res.jwt;
-
-          //build auth headers upon logging in for other components
-          // this.authHeaders = this.prepareAuthHeaders();
 
           //let interceptor know that new token was created
           this.authHeaderInterceptor.login(this.token);
@@ -102,16 +72,11 @@ export class AuthService {
         }
       })
     );
-
   }
 
   logout() {
     //remove user data
-    // this._user = {};
     this._userSubscription.next({}); //probably useless if subscription completes
-
-    //emit loggedIn = false to subscribed components
-    // this._loggedIn.next(false);
 
     //remove token
     this.deleteTokenFromCookie()
@@ -125,22 +90,6 @@ export class AuthService {
     return firstValueFrom(this.http.post(environment.API_URL + "register", userObj));
   }
 
-  /*prepareAuthHeaders() {
-    return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', "Bearer: " + this.token);
-  }*/
-
-  /*private getTokenFromCookie() {
-    let cookieValue = document.cookie
-      .split('; ')
-      .find((row) => row.startsWith(this.COOKIE_TOKEN_NAME + '='))
-      ?.split('=')[1];
-
-    if (cookieValue) { return cookieValue; }
-    return false;
-  }*/
-
   private deleteTokenFromCookie() {
     document.cookie = this.COOKIE_TOKEN_NAME +'=; Path="/";  Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
@@ -150,33 +99,11 @@ export class AuthService {
     let tokenData: any = jwtDecode(this.token);
     tokenData = tokenData.data;
 
-    // this._user.name = tokenData.username;
-    // this._user.id = tokenData.id;
-    // this._user.admin = false; //TODO NENI ADMIN
     this._user.name = tokenData.username;
     this._user.id = tokenData.id;
     this._user.profilePic = tokenData['profile_pic'];
     this._user.admin = false;
 
-    //get other data by new GET request
-    // this.assignAdditionalUserData();
-
-    // this._loggedIn = true;
-    //emit logged in
-    // this._loggedIn.next(true);
-
     this._userSubscription.next(this._user);
-    // this._userSubscription.complete();
   }
-
-  /*private assignAdditionalUserData() {
-    this.userService.getUserById(this._user.id).subscribe((userData: any) => {
-      this._user.profilePic = userData['profile_pic'];
-      this._user.admin = userData['admin'];
-
-      //emit user with more info now
-      this._userSubscription.next(this._user);
-      this._userSubscription.complete();
-    });
-  }*/
 }

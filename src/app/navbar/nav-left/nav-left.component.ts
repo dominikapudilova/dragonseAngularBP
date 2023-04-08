@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { faDragon, faThLarge, faEgg, faStore, faTrophy, faScroll, faStar } from "@fortawesome/free-solid-svg-icons";
 import {PushService} from "../../services/push.service";
 import {ResourceService} from "../../services/resource.service";
-import {ErrorService} from "../../shared/error-service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {resources} from "../../shared/const-resource";
 

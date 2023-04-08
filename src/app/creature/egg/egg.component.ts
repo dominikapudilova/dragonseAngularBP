@@ -157,8 +157,7 @@ export class EggComponent implements OnInit {
       }, (error) => {
         if (error.error.success === false) {
           let message = ErrorService.getErrorMessage(error);
-          // this.addMessage(message);
-
+          this.addErrorMessage(message, this.errorMessagesGeneral);
         }
       }
     );

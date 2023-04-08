@@ -11,7 +11,6 @@ export class NotFoundComponent {
 
   loggedIn: boolean = false;
   constructor(private authService: AuthService, private authInterceptor: AuthHeaderInterceptor) {
-    // this.authService.loggedIn.subscribe(
     this.authInterceptor.loggedIn.subscribe(
       (loggedIn) => {
         this.loggedIn = loggedIn;

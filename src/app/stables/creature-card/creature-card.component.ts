@@ -14,12 +14,6 @@ export class CreatureCardComponent implements OnInit, OnChanges {
 
   /*Represents a single creature in card view. Needs: id, name, imgurl, gender, available*/
 
-  // @Input('id') name!: number;
-  // @Input('name') id!: string;
-  // @Input('imgUrl') imgUrl!: string;
-  // @Input('gender') gender!: boolean;
-  // @Input('available') available!: boolean;
-
   @Input('creature') creature: any = null;
   available: boolean = true;
   availableAt: Date = new Date();
@@ -35,7 +29,7 @@ export class CreatureCardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     //when creature supplied to component, check its availability
     if (changes['creature']) {
-      this.getAvailable(); //todo nešlo by líp? třeba v oninit
+      this.getAvailable();
       //get available straight from request getAllCreatures()
     }
   }
@@ -71,9 +65,5 @@ export class CreatureCardComponent implements OnInit, OnChanges {
         }
       }
     );
-  }
-
-  getRemainingTime() {
-    // return TimerService.getRemainingTimeFormatted(this.remainingTime);
   }
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {faClock, faHandHoldingHeart, faHandLizard, faHeart, faMoon, faSkull} from "@fortawesome/free-solid-svg-icons";
 import {CreatureService} from "../../services/creature.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -23,7 +23,6 @@ export class ActionsRightComponent {
   pettable: boolean = true;
   creaturePrice: number = 0;
 
-  // @Input('creatureId') creatureId: number = 0;
   creatureId: number = 0;
   @Output() errorMessage = new EventEmitter<string>();
   @Output() availableAt = new EventEmitter<string>();

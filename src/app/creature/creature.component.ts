@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnDestroy, OnInit} from '@angular/core';
 import {CreatureService} from "../services/creature.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {faAngleLeft, faAngleRight, faArrowLeft, faPen, faTriangleExclamation} from "@fortawesome/free-solid-svg-icons";
@@ -77,7 +77,6 @@ export class CreatureComponent implements OnInit, OnDestroy, AfterViewChecked {
                 }
               }, (error) => {}
             );
-
 
             //reset variables related to previous creature
             this.errorMessages = [];
@@ -170,10 +169,6 @@ export class CreatureComponent implements OnInit, OnDestroy, AfterViewChecked {
 
         this.skills.push({title: skill, base: statBase, trained: statTrained, max: statMax});
       }
-      // this.skills.push({title: "Strength", base: creatureData['base_strength'], trained: creatureData['trained_strength']});
-      // this.skills.push({title: "Defence", base: creatureData['base_defence'], trained: creatureData['trained_defence']});
-      // this.skills.push({title: "Intelligence", base: creatureData['base_intelligence'], trained: creatureData['trained_intelligence']});
-      // this.skills.push({title: "Speed", base: creatureData['base_speed'], trained: creatureData['trained_speed']});
     }
   }
 
@@ -182,7 +177,6 @@ export class CreatureComponent implements OnInit, OnDestroy, AfterViewChecked {
       return true;
     }
 
-    // if (this.availableIn <= 0) {
     if (!this.timerSubscription || this.timerSubscription?.closed) {
       //if not available and no countdown, start timer
       let timer = TimerService.start(this.availableAt.toUTCString());
@@ -219,7 +213,7 @@ export class CreatureComponent implements OnInit, OnDestroy, AfterViewChecked {
   addMessage(message: string) {
     if (!this.errorMessages.includes(message)) {
       this.errorMessages.push(message);
-    } //todo make into objects: {status: 404, type: 'warning' | 'error', message: 'ddddd'}
+    }
   }
 
   rename(newName: string) {
@@ -254,25 +248,25 @@ export class CreatureComponent implements OnInit, OnDestroy, AfterViewChecked {
     if(progress<25){
       angle += (progress/100)*360;
 
-      this.applyRotationToChildren(element, ".animate-0-25-b", angle); // $(element).find(".animate-0-25-b").css("transform","rotate("+angle+"deg)");
+      this.applyRotationToChildren(element, ".animate-0-25-b", angle);
     }
     else if(progress>=25 && progress<50){
       angle += ((progress-25)/100)*360;
 
-      this.applyRotationToChildren(element, ".animate-0-25-b", 0); // $(element).find(".animate-0-25-b").css("transform","rotate(0deg)");
-      this.applyRotationToChildren(element, ".animate-25-50-b", angle); // $(element).find(".animate-25-50-b").css("transform","rotate("+angle+"deg)");
+      this.applyRotationToChildren(element, ".animate-0-25-b", 0);
+      this.applyRotationToChildren(element, ".animate-25-50-b", angle);
     }
     else if(progress>=50 && progress<75){
       angle += ((progress-50)/100)*360;
 
-      this.applyRotationToChildren(element, ".animate-25-50-b, .animate-0-25-b", 0); // $(element).find(".animate-25-50-b, .animate-0-25-b").css("transform","rotate(0deg)");
-      this.applyRotationToChildren(element, ".animate-50-75-b", angle); // $(element).find(".animate-50-75-b").css("transform","rotate("+angle+"deg)");
+      this.applyRotationToChildren(element, ".animate-25-50-b, .animate-0-25-b", 0);
+      this.applyRotationToChildren(element, ".animate-50-75-b", angle);
     }
     else if(progress>=75 && progress<=100){
       angle += ((progress-75)/100)*360;
 
-      this.applyRotationToChildren(element, ".animate-50-75-b, .animate-25-50-b, .animate-0-25-b", 0); // $(element).find(".animate-50-75-b, .animate-25-50-b, .animate-0-25-b").css("transform","rotate(0deg)");
-      this.applyRotationToChildren(element, ".animate-75-100-b", angle); // $(element).find(".animate-75-100-b").css("transform","rotate("+angle+"deg)");
+      this.applyRotationToChildren(element, ".animate-50-75-b, .animate-25-50-b, .animate-0-25-b", 0);
+      this.applyRotationToChildren(element, ".animate-75-100-b", angle);
     }
 
     return true;
